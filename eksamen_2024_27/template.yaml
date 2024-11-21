@@ -35,7 +35,13 @@ Resources:
           Type: Api
           Properties:
             Path: /generate-image  
-            Method: post   
+            Method: post
+            RestApiId:
+              Ref: ServerlessRestApi
+            StageName: Prod
+            EndpointConfiguration:
+              Types:
+                - REGIONAL
 
 Outputs:
   ImageGenerationApi:
