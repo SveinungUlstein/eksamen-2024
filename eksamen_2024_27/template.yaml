@@ -1,55 +1,16 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  SAM Template for Image Generation Lambda Function
-  
+Description: Simple SAM Template
+
 Globals:
   Function:
     Timeout: 60
-    MemorySize: 500
+    MemorySize: 128
 
 Resources:
-  ImageGenerationFunction:  
+  SimpleLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: hello_world/  
-      Handler: app.lambda_handler  
+      CodeUri: ./hello_world/
+      Handler: app.lambda_handler
       Runtime: python3.9
-      Architectures:
-        - x86_64
-      Environment:
-        Variables:
-          BUCKET: pgr301-couch-explorers
-      Policies:
-        - Statement:
-            - Effect: Allow
-              Action: 
-                - s3:PutObject
-              Resource: arn:aws:s3:::pgr301-couch-explorers/*
-            - Effect: Allow
-              Action:
-                - bedrock:InvokeModel
-              Resource: arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-image-generator-v1
-      Events:
-        ImageGenerationApi:  
-          Type: Api
-          Properties:
-            Path: /generate-image  
-            Method: post
-            RestApiId:
-              Ref: ServerlessRestApi
-            StageName: Prod
-            EndpointConfiguration:
-              Types:
-                - REGIONAL
-
-Outputs:
-  ImageGenerationApi:
-    Description: "API Gateway endpoint URL for image generation function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/generate-image/"
-  ImageGenerationFunction:
-    Description: "Image Generation Lambda Function ARN"
-    Value: !GetAtt ImageGenerationFunction.Arn
-  ImageGenerationFunctionIamRole:
-    Description: "Implicit IAM Role created for image generation function"
-    Value: !GetAtt ImageGenerationFunctionRole.Arn
