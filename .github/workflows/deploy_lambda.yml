@@ -29,4 +29,4 @@ jobs:
         run: sam build -t eksamen_2024_27/template.yaml
 
       - name: Deploy SAM application
-        run: sam deploy --no-confirm-changeset --stack-name my-stack --capabilities CAPABILITY_IAM
+        run: sam deploy --guided --no-confirm-changeset --stack-name my-stack --capabilities CAPABILITY_IAM
