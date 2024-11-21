@@ -21,15 +21,12 @@ jobs:
           aws-region: us-west-1
 
       - name: Set up SAM CLI
-      uses: aws-actions/aws-sam-cli-action@v1
-      with:
-        version: 'latest'
-
+        uses: aws-actions/aws-sam-cli-action@v1
+        with:
+          version: 'latest'
 
       - name: Build SAM application
         run: sam build
 
       - name: Deploy SAM application
         run: sam deploy --no-confirm-changeset --stack-name my-stack --capabilities CAPABILITY_IAM
-
-
