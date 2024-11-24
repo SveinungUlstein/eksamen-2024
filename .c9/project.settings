@@ -2,6 +2,7 @@
     "extensions": {
         "@aws.profile": "",
         "@aws.samcli.lambdaTimeout": 90000,
+        "@aws.suppressPrompts.codeWhispererConnectionExpired": true,
         "@editor.acceptSuggestionOnEnter": "on",
         "@editor.snippetSuggestions": "top",
         "@editor.suggest.preview": true,
