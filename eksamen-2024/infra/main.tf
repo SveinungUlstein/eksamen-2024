@@ -1,8 +1,3 @@
-# Prefix variable
-variable "prefix" {
-  type        = string
-  description = "Prefix for all resource names"
-}
 
 terraform{
 required_version = "<= 1.9.0"
@@ -93,7 +88,7 @@ resource "aws_iam_role_policy_attachment" "lambda_sqs_attachment" {
 }
 
 resource "aws_lambda_function" "comprehend_lambda" {
-  function_name = "${var.prefix}_comprehend_lambda_function"
+  function_name = "_comprehend_lambda_function"
   filename      = "lambda_sqs.zip" 
   handler       = "lambda_sqs.lambda_handler"
   runtime       = "python3.8"
