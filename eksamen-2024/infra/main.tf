@@ -103,6 +103,12 @@ environment {
   }
 
   source_code_hash = filebase64sha256("lambda_sqs.zip")
+  
+variable "bucket_name" {
+  description = "S3 bucket name for Terraform state"
+  type        = string
+}
+  
 }
 
 # Lambda Function URL Resource
@@ -130,9 +136,10 @@ output "sqs_queue_url" {
 }
 
 variable "notification_email" {
-  description = "seinung.ulstein@gmail.com"
+  description = "Email address for notifications"
   type        = string
 }
+
 
 resource "aws_cloudwatch_metric_alarm" "sqs_oldest_message_age" {
   alarm_name                = "sqs-alarm-oldest-message-27"
