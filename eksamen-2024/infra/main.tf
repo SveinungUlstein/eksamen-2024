@@ -129,6 +129,10 @@ output "sqs_queue_url" {
   value = aws_sqs_queue.lambda_queue.id
 }
 
+variable "notification_email" {
+  description = "seinung.ulstein@gmail.com"
+  type        = string
+}
 
 resource "aws_cloudwatch_metric_alarm" "sqs_oldest_message_age" {
   alarm_name                = "sqs-alarm-oldest-message-27"
