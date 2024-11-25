@@ -130,7 +130,7 @@ output "sqs_queue_url" {
 }
 
 variable "notification_email" {
-  description = "sveinung.ulstein@hotmail.com"
+  description = "seinung.ulstein@gmail.com"
   type        = string
 }
 
@@ -142,7 +142,7 @@ resource "aws_cloudwatch_metric_alarm" "sqs_oldest_message_age" {
   namespace                 = "AWS/SQS"
   period                    = 20
   statistic                 = "Maximum"
-  threshold                 = 2  # 5 minutter
+  threshold                 = 0.5  # 5 minutter
   alarm_description         = "Alarm når den eldste meldingen i SQS er eldre enn 5 minutter"
   dimensions = {
     QueueName = "lambda_queue_27"
