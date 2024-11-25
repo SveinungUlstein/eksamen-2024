@@ -38,7 +38,7 @@ jobs:
       - name: Terraform Init
         run: |
           cd eksamen-2024/infra 
-          /home/runner/work/_temp/terraform-bin init -reconfigure
+          terraform init -migrate-state
 
       # Bruker forskjellig oppførsel avhengig av hvilken branch som trigget workflowen
       - name: Terraform Plan/Apply
