@@ -1,4 +1,1 @@
-variable "notification_email" {
-  description = "seinung.ulstein@gmail.com"
-  type        = string
-}
+notification_email = "seinung.ulstein@gmail.com"
