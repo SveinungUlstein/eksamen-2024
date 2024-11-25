@@ -36,7 +36,7 @@ jobs:
 
       # Initialiserer Terraform
       - name: Terraform Init
-        run: 
+        run: |
           cd eksamen-2024/infra 
           terraform init
 
