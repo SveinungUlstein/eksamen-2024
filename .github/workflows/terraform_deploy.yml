@@ -45,7 +45,8 @@ jobs:
         run: |
           cd eksamen-2024/infra
           if [[ "${{ github.ref_name }}" == "master" ]]; then
-            terraform apply -auto-approve
+            terraform apply -var="bucket_name=pgr301-2024-terraform-state" -auto-approve
           else
-            terraform plan
+            terraform plan -var="bucket_name=pgr301-2024-terraform-state"
           fi
+
