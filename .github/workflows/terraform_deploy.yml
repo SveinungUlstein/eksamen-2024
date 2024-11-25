@@ -36,13 +36,16 @@ jobs:
 
       # Initialiserer Terraform
       - name: Terraform Init
-        run: terraform init -chdir=eksamen-2024/infra
+        run: 
+          cd eksamen-2024/infra 
+          terraform init
 
       # Bruker forskjellig oppførsel avhengig av hvilken branch som trigget workflowen
       - name: Terraform Plan/Apply
         run: |
+          cd eksamen-2024/infra
           if [[ "${{ github.ref_name }}" == "main" ]]; then
-            terraform apply -chdir=eksamen-2024/infra -auto-approve
+            terraform apply -auto-approve
           else
-            terraform plan -chdir=eksamen-2024/infra
+            terraform plan
           fi
