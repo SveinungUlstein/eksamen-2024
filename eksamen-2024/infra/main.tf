@@ -7,6 +7,12 @@ backend "s3" {
     region = "eu-west-1"
   }
 }
+
+variable "bucket_name" {
+  description = "S3 bucket name for Terraform state"
+  type        = string
+}
+
 # IAM Role for Lambda Execution
 resource "aws_iam_role" "lambda_role" {
   assume_role_policy = jsonencode({
@@ -103,11 +109,6 @@ environment {
   }
 
   source_code_hash = filebase64sha256("lambda_sqs.zip")
-  
-variable "bucket_name" {
-  description = "S3 bucket name for Terraform state"
-  type        = string
-}
   
 }
 
